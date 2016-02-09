@@ -1,0 +1,22 @@
+{
+  "name": "eventjs",
+  "version": "0.0.1",
+  "main": "dist/event-handler.js",
+  "files": [ "dist" ],
+  "devDependencies": {
+    "gulp": "3.9.0",
+    "gulp-typescript": "2.10.0",
+    "rimraf": "latest",
+    "mkdirp": "latest",
+    "webpack-stream": "^3.1.0",
+    "require-dir": "^0.1.0",
+    "merge2": "latest",
+    "del": "latest",
+    "chai": "latest",
+    "karma": "^0.13.19",
+    "mocha": "latest",
+    "karma-mocha": "latest",
+    "karma-firefox-launcher": "latest",
+    "karma-chai": "^0.1.0"
+  }
+}
