@@ -1,7 +1,7 @@
 {
   "name": "eventjs",
-  "version": "0.0.3",
-  "main": "dist/event-handler.js",
+  "version": "0.0.4",
+  "main": "dist/commonjs/index.js",
   "files": [ "dist", "index.d.ts" ],
   "devDependencies": {
     "gulp": "3.9.0",
