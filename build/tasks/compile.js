@@ -3,7 +3,7 @@ var ts = require('gulp-typescript');
 var merge = require('merge2');
 var paths = require("../paths");
 
-gulp.task('compile', function() {
+gulp.task('compile', ["generate-exports"], function() {
     var tsResult = gulp.src([paths.source, paths.typings])
         .pipe(ts({
             declaration: true,

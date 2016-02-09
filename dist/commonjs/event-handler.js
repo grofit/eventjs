@@ -28,6 +28,9 @@ var EventHandler = (function () {
                 }
             }
         };
+        this.getSubscriptionCount = function () {
+            return _this.listeners.length;
+        };
     }
     return EventHandler;
 })();

@@ -84,6 +84,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	                }
 	            }
 	        };
+	        this.getSubscriptionCount = function () {
+	            return _this.listeners.length;
+	        };
 	    }
 	    return EventHandler;
 	})();

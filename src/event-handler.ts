@@ -32,4 +32,8 @@ export class EventHandler
             { this.listeners[i].callback(this.sender, args); }
         }
     };
+
+    public getSubscriptionCount = (): number => {
+        return this.listeners.length;
+    }
 }

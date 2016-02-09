@@ -74,4 +74,15 @@ describe('Event Handler', function () {
         expect(timesCalled).to.equal(0);
     });
 
+    it('should return the correct subscription count', function () {
+        var dummySender = {};
+        var eventHandler = new EventJs.EventHandler(dummySender);
+
+        eventHandler.subscribe(function(){});
+        eventHandler.subscribe(function(){});
+        eventHandler.subscribe(function(){});
+        eventHandler.subscribe(function(){});
+
+        expect(eventHandler.getSubscriptionCount()).to.equal(4);
+    });
 });
