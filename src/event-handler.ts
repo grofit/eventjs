@@ -21,6 +21,11 @@ export class EventHandler
         }
     };
 
+
+    public unsubscribeAll = () => {
+        this.listeners = [];
+    };
+
     public publish = (args) => {
         for (var i = 0; i < this.listeners.length; i++) {
             if(this.listeners[i].predicate) {

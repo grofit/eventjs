@@ -72,6 +72,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	                }
 	            }
 	        };
+	        this.unsubscribeAll = function () {
+	            _this.listeners = [];
+	        };
 	        this.publish = function (args) {
 	            for (var i = 0; i < _this.listeners.length; i++) {
 	                if (_this.listeners[i].predicate) {

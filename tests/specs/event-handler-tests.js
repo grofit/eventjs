@@ -85,4 +85,18 @@ describe('Event Handler', function () {
 
         expect(eventHandler.getSubscriptionCount()).to.equal(4);
     });
+
+    it('should cancel all subscriptions when unsubscribing all', function () {
+        var dummySender = {};
+        var eventHandler = new EventJs.EventHandler(dummySender);
+
+        eventHandler.subscribe(function(){});
+        eventHandler.subscribe(function(){});
+        eventHandler.subscribe(function(){});
+        eventHandler.subscribe(function(){});
+
+        eventHandler.unsubscribeAll();
+
+        expect(eventHandler.getSubscriptionCount()).to.equal(0);
+    });
 });
