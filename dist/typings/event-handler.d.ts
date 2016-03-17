@@ -6,5 +6,6 @@ export declare class EventHandler {
     unsubscribe: (callback: (sender: any, args: any) => void) => void;
     unsubscribeAll: () => void;
     publish: (args: any) => void;
+    publishSync: (args: any) => void;
     getSubscriptionCount: () => number;
 }

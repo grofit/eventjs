@@ -20,16 +20,28 @@ var EventHandler = (function () {
             _this.listeners = [];
         };
         this.publish = function (args) {
-            for (var i = 0; i < _this.listeners.length; i++) {
-                if (_this.listeners[i].predicate) {
-                    if (_this.listeners[i].predicate(args)) {
-                        _this.listeners[i].callback(_this.sender, args);
+            _this.listeners.forEach(function (eventListener) {
+                if (eventListener.predicate) {
+                    if (eventListener.predicate(args)) {
+                        setTimeout(function () { eventListener.callback(args, _this.sender); }, 1);
                     }
                 }
                 else {
-                    _this.listeners[i].callback(_this.sender, args);
+                    setTimeout(function () { eventListener.callback(args, _this.sender); }, 1);
                 }
-            }
+            });
+        };
+        this.publishSync = function (args) {
+            _this.listeners.forEach(function (eventListener) {
+                if (eventListener.predicate) {
+                    if (eventListener.predicate(args)) {
+                        eventListener.callback(args, _this.sender);
+                    }
+                }
+                else {
+                    eventListener.callback(args, _this.sender);
+                }
+            });
         };
         this.getSubscriptionCount = function () {
             return _this.listeners.length;

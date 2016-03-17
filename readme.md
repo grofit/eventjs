@@ -10,7 +10,7 @@ function SomeClass()
 }
 
 var someInstance = new SomeClass();
-someInstance.someEvent.subscribe(function(sender, args) { alert(args); });
+someInstance.someEvent.subscribe(function(args, sender) { alert(args); });
 someInstance.publishEvent();
 // Would alert "hello"
 ```
@@ -36,9 +36,9 @@ So as shown in the above example you can easily subscribe to events with it, sub
 listeners as you want to them.
 
 ```js
-var function1 = function(sender, args) { ... };
-var function2 = function(sender, args) { ... };
-var function3 = function(sender, args) { ... };
+var function1 = function(args, sender) { ... };
+var function2 = function(args, sender) { ... };
+var function3 = function(args, sender) { ... };
 
 var someEvent = new EventHandler(someSender);
 
@@ -52,7 +52,7 @@ someEvent.publish(something);
 You can also add predicates to only subscribe based upon arguments:
 
 ```js
-var onlyWhenPredicateMet = function(sender, args) { ... };
+var onlyWhenPredicateMet = function(args) { ... };
 var predicate = function(args) { return args.length <= 2; }
 
 var someEvent = new EventHandler(someSender);
@@ -66,7 +66,7 @@ someEvent.publish("GO"); // predicate returns true and would trigger subscriptio
 Finally if you want to unsubscribe just do:
 
 ```js
-var someSubscription = function(sender, args) { ... };
+var someSubscription = function(args) { ... };
 var someEvent = new EventHandler(someSender);
 
 someEvent.subscribe(someSubscription); // subscribe it
@@ -80,6 +80,14 @@ you can capture the return unsubscriber token and use that for unsubscribing:
 var someSubscription = ;
 var someEvent = new EventHandler(someSender);
 
-var unsubscriber = someEvent.subscribe(function(sender, args) { ... }); // subscribe and get unsubscriber
+var unsubscriber = someEvent.subscribe(function(args) { ... }); // subscribe and get unsubscriber
 unsubscriber(); // unsubscribe it
 ```
+
+## Differences with C#
+
+In c# the events tend to put the sender first, however as in most cases you don't care about the sender
+and JS has optional arguments it made more sense for the args to be the first parameter and then the sender
+be the last, this makes it more succinct when writing event handlers which do not care about the sender.
+
+Before version 0.0.6 it used to be the other way around, but from this point on it will be as detailed above.

@@ -27,15 +27,27 @@ export class EventHandler
     };
 
     public publish = (args) => {
-        for (var i = 0; i < this.listeners.length; i++) {
-            if(this.listeners[i].predicate) {
-                if(this.listeners[i].predicate(args)) {
-                    this.listeners[i].callback(this.sender, args);
+        this.listeners.forEach((eventListener) => {
+            if(eventListener.predicate) {
+                if(eventListener.predicate(args)) {
+                    setTimeout(() => { eventListener.callback(args, this.sender); }, 1);
                 }
             }
             else
-            { this.listeners[i].callback(this.sender, args); }
-        }
+            { setTimeout(() => { eventListener.callback(args, this.sender); }, 1); }
+        });
+    };
+
+    public publishSync = (args) => {
+        this.listeners.forEach((eventListener) => {
+            if(eventListener.predicate) {
+                if(eventListener.predicate(args)) {
+                    eventListener.callback(args, this.sender);
+                }
+            }
+            else
+            { eventListener.callback(args, this.sender); }
+        });
     };
 
     public getSubscriptionCount = (): number => {
