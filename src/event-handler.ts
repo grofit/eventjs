@@ -21,7 +21,6 @@ export class EventHandler
         }
     };
 
-
     public unsubscribeAll = () => {
         this.listeners = [];
     };

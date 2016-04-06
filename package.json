@@ -1,7 +1,7 @@
 {
-  "name": "eventjs",
-  "description": "A simple class for allowing c# style events in js",
-  "version": "0.0.6",
+  "name": "event-js",
+  "description": "A simple class for allowing c# style events (with some extra features) in js",
+  "version": "0.0.7",
   "main": "dist/commonjs/index.js",
   "files": [ "dist", "index.d.ts" ],
   "bugs": {
