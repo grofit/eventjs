@@ -1,5 +1,7 @@
 # EventHandler
 
+[![Build Status](https://travis-ci.org/grofit/eventjs.svg?branch=master)](https://travis-ci.org/grofit/eventjs)
+
 A simple class for allowing c# style events in js:
 
 ```js

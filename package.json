@@ -1,7 +1,7 @@
 {
   "name": "event-js",
   "description": "A simple class for allowing c# style events (with some extra features) in js",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": "dist/commonjs/index.js",
   "files": [ "dist", "index.d.ts" ],
   "bugs": {
@@ -13,6 +13,9 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/grofit/eventjs"
+  },
+  "scripts": {
+    "test": "karma start --single-run --browsers PhantomJS ./tests/karma.conf.js"
   },
   "devDependencies": {
     "gulp": "3.9.0",
@@ -28,7 +31,9 @@
     "karma": "^0.13.19",
     "mocha": "latest",
     "karma-mocha": "latest",
+    "karma-phantomjs-launcher": "^1.0.0",
     "karma-firefox-launcher": "latest",
-    "karma-chai": "^0.1.0"
+    "karma-chai": "^0.1.0",
+    "phantomjs-prebuilt": "^2.1.7"
   }
 }
