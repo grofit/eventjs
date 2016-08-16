@@ -3,16 +3,31 @@ var ts = require('gulp-typescript');
 var merge = require('merge2');
 var paths = require("../paths");
 
-gulp.task('compile', ["generate-exports"], function() {
+var compileFor = function(moduleType, withTypings) {
     var tsResult = gulp.src([paths.source, paths.typings])
         .pipe(ts({
             declaration: true,
-            module: "commonjs",
-            target: "es5"
+            module: moduleType,
+            target: "es5",
+            moduleResolution: "node",
+            declarationFiles: true
         }));
 
+    if(withTypings) {
+        return merge([
+            tsResult.dts.pipe(gulp.dest(paths.dist + "/definitions")),
+            tsResult.js.pipe(gulp.dest(paths.dist + "/" + moduleType))
+        ]);
+    }
+
+    return tsResult.js.pipe(gulp.dest(paths.dist + "/" +moduleType));
+}
+
+
+gulp.task('compile', ["generate-exports"], function() {
     return merge([
-        tsResult.dts.pipe(gulp.dest(paths.dist + "/typings")),
-        tsResult.js.pipe(gulp.dest(paths.dist + "/commonjs"))
+        compileFor("commonjs", true),
+        compileFor("amd"),
+        compileFor("system")
     ]);
 });
