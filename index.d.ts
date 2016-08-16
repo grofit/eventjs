@@ -1,1 +1,1 @@
-export * from './dist/typings/index'
+export * from './dist/definitions/index'
