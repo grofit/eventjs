@@ -1,6 +1,7 @@
-/* This is an auto-generated file by gulp-es6-exporter */
+"use strict";
 function __export(m) {
     for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 }
+Object.defineProperty(exports, "__esModule", { value: true });
 __export(require("./event-handler"));
 __export(require("./event-listener"));

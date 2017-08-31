@@ -1,4 +1,6 @@
 define(["require", "exports", "./event-listener"], function (require, exports, event_listener_1) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
     var EventHandler = (function () {
         function EventHandler(sender) {
             var _this = this;
@@ -48,6 +50,6 @@ define(["require", "exports", "./event-listener"], function (require, exports, e
             };
         }
         return EventHandler;
-    })();
+    }());
     exports.EventHandler = EventHandler;
 });

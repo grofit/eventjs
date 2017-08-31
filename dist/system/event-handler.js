@@ -1,63 +1,63 @@
-System.register(["./event-listener"], function(exports_1) {
-    var event_listener_1;
-    var EventHandler;
+System.register(["./event-listener"], function (exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
+    var event_listener_1, EventHandler;
     return {
-        setters:[
+        setters: [
             function (event_listener_1_1) {
                 event_listener_1 = event_listener_1_1;
-            }],
-        execute: function() {
-            EventHandler = (function () {
-                function EventHandler(sender) {
-                    var _this = this;
+            }
+        ],
+        execute: function () {
+            EventHandler = class EventHandler {
+                constructor(sender) {
                     this.sender = sender;
                     this.listeners = [];
-                    this.subscribe = function (callback, predicate) {
-                        _this.listeners.push(new event_listener_1.EventListener(callback, predicate));
-                        return function () { _this.unsubscribe(callback); };
+                    this.subscribe = (callback, predicate) => {
+                        this.listeners.push(new event_listener_1.EventListener(callback, predicate));
+                        return () => { this.unsubscribe(callback); };
                     };
-                    this.unsubscribe = function (callback) {
-                        for (var i = 0; i < _this.listeners.length; i++) {
-                            if (_this.listeners[i].callback == callback) {
-                                _this.listeners.splice(i, 1);
+                    this.unsubscribe = (callback) => {
+                        for (let i = 0; i < this.listeners.length; i++) {
+                            if (this.listeners[i].callback == callback) {
+                                this.listeners.splice(i, 1);
                                 return;
                             }
                         }
                     };
-                    this.unsubscribeAll = function () {
-                        _this.listeners = [];
+                    this.unsubscribeAll = () => {
+                        this.listeners = [];
                     };
-                    this.publish = function (args) {
-                        _this.listeners.forEach(function (eventListener) {
+                    this.publish = (args) => {
+                        this.listeners.forEach((eventListener) => {
                             if (eventListener.predicate) {
                                 if (eventListener.predicate(args)) {
-                                    setTimeout(function () { eventListener.callback(args, _this.sender); }, 1);
+                                    setTimeout(() => { eventListener.callback(args, this.sender); }, 1);
                                 }
                             }
                             else {
-                                setTimeout(function () { eventListener.callback(args, _this.sender); }, 1);
+                                setTimeout(() => { eventListener.callback(args, this.sender); }, 1);
                             }
                         });
                     };
-                    this.publishSync = function (args) {
-                        _this.listeners.forEach(function (eventListener) {
+                    this.publishSync = (args) => {
+                        this.listeners.forEach((eventListener) => {
                             if (eventListener.predicate) {
                                 if (eventListener.predicate(args)) {
-                                    eventListener.callback(args, _this.sender);
+                                    eventListener.callback(args, this.sender);
                                 }
                             }
                             else {
-                                eventListener.callback(args, _this.sender);
+                                eventListener.callback(args, this.sender);
                             }
                         });
                     };
-                    this.getSubscriptionCount = function () {
-                        return _this.listeners.length;
+                    this.getSubscriptionCount = () => {
+                        return this.listeners.length;
                     };
                 }
-                return EventHandler;
-            })();
+            };
             exports_1("EventHandler", EventHandler);
         }
-    }
+    };
 });

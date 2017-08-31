@@ -12,7 +12,7 @@ export class EventHandler
     };
 
     public unsubscribe = (callback: (sender: any, args: any) => void) => {
-        for(var i=0; i<this.listeners.length; i++) {
+        for(let i=0; i<this.listeners.length; i++) {
             if(this.listeners[i].callback == callback)
             {
                 this.listeners.splice(i, 1);
@@ -21,11 +21,11 @@ export class EventHandler
         }
     };
 
-    public unsubscribeAll = () => {
+    public unsubscribeAll = (): void => {
         this.listeners = [];
     };
 
-    public publish = (args) => {
+    public publish = (args: any): void => {
         this.listeners.forEach((eventListener) => {
             if(eventListener.predicate) {
                 if(eventListener.predicate(args)) {
@@ -37,7 +37,7 @@ export class EventHandler
         });
     };
 
-    public publishSync = (args) => {
+    public publishSync = (args: any): void => {
         this.listeners.forEach((eventListener) => {
             if(eventListener.predicate) {
                 if(eventListener.predicate(args)) {

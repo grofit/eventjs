@@ -6,7 +6,6 @@ gulp.task('package', ["compile"], function () {
     return gulp.src([paths.dist + "/commonjs/event-handler.js"])
         .pipe(webpack({
             output: {
-                entry: "event-handler.js",
                 filename: "event.js",
                 library: "EventJs",
                 libraryTarget: "umd"

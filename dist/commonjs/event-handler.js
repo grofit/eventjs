@@ -1,3 +1,5 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var event_listener_1 = require("./event-listener");
 var EventHandler = (function () {
     function EventHandler(sender) {
@@ -48,5 +50,5 @@ var EventHandler = (function () {
         };
     }
     return EventHandler;
-})();
+}());
 exports.EventHandler = EventHandler;
